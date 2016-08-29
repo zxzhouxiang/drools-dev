@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
+		<beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:kie="http://drools.org/schema/drools-spring"
+	   xmlns:kie="http://drools.org/schema/kie-spring"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="
-	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd   
+	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
-   http://drools.org/schema/drools-spring http://anonsvn.jboss.org/repos/labs/labs/jbossrules/trunk/drools-container/drools-spring/src/main/resources/org/drools/container/spring/drools-spring-1.7.0.xsd
+   http://drools.org/schema/kie-spring http://drools.org/schema/kie-spring.xsd
     ">
-         <kie:kbase id="aa" node="">
-	<kie:kbase/>
-	<kie:ksession type="com.zhouxi" kbase="aa" id="bb"/>
+	<context:component-scan base-package="com.zhouxiang"/>
+	<kie:kmodule id="route2" >
+		<kie:kbase name="route_kbase" packages="aa.bb.route"  >
+			<kie:ksession name="ksession_route" scope="prototype" ></kie:ksession>
+		</kie:kbase>
+	</kie:kmodule>
 
 	<!-- 使用annotation 自动注册bean,并检查@Required,@Autowired的属性已被注入 -->
-	
-	<context:component-scan base-package="com.zhouxiang.*" />
-	<bean id="message" class="com.zhouxiang.model.Message"/>
-
-</beans>    
+	<bean id="kiePostProcessor"
+		  class="org.kie.spring.annotations.KModuleAnnotationPostProcessor"/>
+	<!--<bean id="message" class="com.zhouxiang.model.Message"/>-->
+</beans>

@@ -1,4 +1,4 @@
-package com.zhouxiang.rules
+package aa.bb.route;
 import com.zhouxiang.model.Message
 //规则名
 rule "Hello World"

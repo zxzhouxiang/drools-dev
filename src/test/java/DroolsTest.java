@@ -20,7 +20,7 @@ public class DroolsTest {
             //从KieServices中获得KieContainer实例，其会加载kmodule.xml文件并load规则文件
             KieContainer kieContainer = kieServices.getKieClasspathContainer();
             //建立KieSession到规则文件的通信管道
-            KieSession kSession = kieContainer.newKieSession("ksession-rules");
+            KieSession kSession = kieContainer.newKieSession("ksession-route");
             Message message = new Message();
             message.setMessage("Hello World");
             message.setStatus(Message.HELLO);
